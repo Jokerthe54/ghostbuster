@@ -3,13 +3,21 @@
     "description": "",
     "dependencies": {
         "device": "*",
-        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#96cf1014271246d15b85368b45f298bd8c6609c4"
+        "arcade-mini-menu": "github:riknoll/arcade-mini-menu#96cf1014271246d15b85368b45f298bd8c6609c4",
+        "arcade-text": "github:microsoft/arcade-text#v1.3.0",
+        "Color Fading": "github:jwunderl/pxt-color#v0.2.3",
+        "arcade-story": "github:microsoft/arcade-storytelling#v1.0.3",
+        "pxt-lantern": "github:felixtsu/pxt-lantern#v0.2.1",
+        "arcade-shader": "github:riknoll/arcade-shader#d2a2572906fdb68ff429f337e30606b069e688ea",
+        "arcade-character-animations": "github:microsoft/arcade-character-animations#v0.0.2"
     },
     "files": [
         "main.blocks",
         "main.ts",
         "README.md",
-        "assets.json"
+        "assets.json",
+        "tilemap.g.jres",
+        "tilemap.g.ts"
     ],
     "testFiles": [
         "test.ts"
