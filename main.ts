@@ -4,8 +4,15 @@ function Startgame (Rounds: number) {
     })
     MySprite()
     Light()
+    a += 1
 }
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    color.startFade(color.originalPalette, color.Black)
+    tiles.setCurrentTilemap(tilemap`level3`)
+    color.clearFadeEffect()
+})
 function Start () {
+    a = 0
     color.startFade(color.Black, color.originalPalette)
     scene.setBackgroundImage(img`
         fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff
@@ -93,199 +100,517 @@ function Light () {
     60,
     30
     )
-    if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingRight, Predicate.NotMoving))) {
-        characterAnimations.loopFrames(
-        Ghostbuster_1,
-        [img`
-            . . . f f f f f . . . . . 
-            . f f f f f f f f f . . . 
-            . f f f f f f c f f f . . 
-            f f f f c f f f c f f . . 
-            f c f f c c f f f c c f f 
-            f c c f f f f e f f f f f 
-            f f f f f f f e e f f f . 
-            f f e e f b f e e f f . . 
-            . f e b e 1 f b b f . . . 
-            . f f f e b b b b f . . . 
-            . . f e e e e e f f . . . 
-            . . e 2 2 2 d d d f c 5 . 
-            . . e d d e e c c c c 5 . 
-            . . f d d e e c c c c 5 . 
-            . . . f f f f f f . c 5 . 
-            . . . . f f f . . . . . . 
-            `,img`
-            . . . f f f f f . . . . . 
-            . f f f f f f f f f . . . 
-            . f f f f f f c f f f . . 
-            f f f f c f f f c f f . . 
-            f c f f c c f f f c c f f 
-            f c c f f f f e f f f f f 
-            f f f f f f f e e f f f . 
-            f f e e f b f e e f f . . 
-            . f e b e 1 f b b f . . . 
-            . f f f e b b b b f . . . 
-            . . f e e e e e f f . . . 
-            . . e 2 2 2 d d d f c 5 . 
-            . . e d d e e c c c c 5 5 
-            . . f d d e e c c c c 5 5 
-            . . . f f f f f f . c 5 . 
-            . . . . f f f . . . . . . 
-            `,img`
-            . . . f f f f f . . . . . 
-            . f f f f f f f f f . . . 
-            . f f f f f f c f f f . . 
-            f f f f c f f f c f f . . 
-            f c f f c c f f f c c f f 
-            f c c f f f f e f f f f f 
-            f f f f f f f e e f f f . 
-            f f e e f b f e e f f . . 
-            . f e b e 1 f b b f . . . 
-            . f f f e b b b b f . . . 
-            . . f e e e e e f f . . . 
-            . . e 2 2 2 d d d f c 5 . 
-            . . e d d e e c c c c 5 5 
-            . . f d d e e c c c c 5 5 
-            . . . f f f f f f . c 5 . 
-            . . . . f f f . . . . . . 
-            `,img`
-            . . . f f f f f . . . . . 
-            . f f f f f f f f f . . . 
-            . f f f f f f c f f f . . 
-            f f f f c f f f c f f . . 
-            f c f f c c f f f c c f f 
-            f c c f f f f e f f f f f 
-            f f f f f f f e e f f f . 
-            f f e e f b f e e f f . . 
-            . f e b e 1 f b b f . . . 
-            . f f f e b b b b f . . . 
-            . . f e e e e e f f . . . 
-            . . e 2 2 2 d d d f c 5 . 
-            . . e d d e e c c c c 5 5 
-            . . f d d e e c c c c 5 5 
-            . . . f f f f f f . c 5 . 
-            . . . . f f f . . . . . . 
-            `,img`
-            . . . f f f f f . . . . . 
-            . f f f f f f f f f . . . 
-            . f f f f f f c f f f . . 
-            f f f f c f f f c f f . . 
-            f c f f c c f f f c c f f 
-            f c c f f f f e f f f f f 
-            f f f f f f f e e f f f . 
-            f f e e f b f e e f f . . 
-            . f e b e 1 f b b f . . . 
-            . f f f e b b b b f . . . 
-            . . f e e e e e f f . . . 
-            . . e 2 2 2 d d d f c . . 
-            . . e d d e e c c c c 5 . 
-            . . f d d e e c c c c 5 . 
-            . . . f f f f f f . c . . 
-            . . . . f f f . . . . . . 
-            `],
-        100,
-        characterAnimations.rule(Predicate.NotMoving, Predicate.FacingRight)
-        )
-        multilights.flashlightSourceAttachedTo(Ghostbuster_1).direction = 0
-    } else if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingLeft, Predicate.NotMoving))) {
-        characterAnimations.loopFrames(
-        Ghostbuster_1,
-        [img`
-            . . . . . f f f f f . . . 
-            . . . f f f f f f f f f . 
-            . . f f f c f f f f f f . 
-            . . f f c f f f c f f f f 
-            f f c c f f f c c f f c f 
-            f f f f f e f f f f c c f 
-            . f f f e e f f f f f f f 
-            . . f f e e f b f e e f f 
-            . . . f b b f 1 e b e f . 
-            . . . f b b b b e f f f . 
-            . . . f f e e e e e f . . 
-            . 5 c f d d d 2 2 2 e . . 
-            . 5 c c c c e e d d e . . 
-            . 5 c c c c e e d d f . . 
-            . 5 c . f f f f f f . . . 
-            . . . . . . f f f . . . . 
-            `,img`
-            . . . . . f f f f f . . . 
-            . . . f f f f f f f f f . 
-            . . f f f c f f f f f f . 
-            . . f f c f f f c f f f f 
-            f f c c f f f c c f f c f 
-            f f f f f e f f f f c c f 
-            . f f f e e f f f f f f f 
-            . . f f e e f b f e e f f 
-            . . . f b b f 1 e b e f . 
-            . . . f b b b b e f f f . 
-            . . . f f e e e e e f . . 
-            . 5 c f d d d 2 2 2 e . . 
-            5 5 c c c c e e d d e . . 
-            5 5 c c c c e e d d f . . 
-            . 5 c . f f f f f f . . . 
-            . . . . . . f f f . . . . 
-            `,img`
-            . . . . . f f f f f . . . 
-            . . . f f f f f f f f f . 
-            . . f f f c f f f f f f . 
-            . . f f c f f f c f f f f 
-            f f c c f f f c c f f c f 
-            f f f f f e f f f f c c f 
-            . f f f e e f f f f f f f 
-            . . f f e e f b f e e f f 
-            . . . f b b f 1 e b e f . 
-            . . . f b b b b e f f f . 
-            . . . f f e e e e e f . . 
-            . 5 c f d d d 2 2 2 e . . 
-            5 5 c c c c e e d d e . . 
-            5 5 c c c c e e d d f . . 
-            . 5 c . f f f f f f . . . 
-            . . . . . . f f f . . . . 
-            `,img`
-            . . . . . f f f f f . . . 
-            . . . f f f f f f f f f . 
-            . . f f f c f f f f f f . 
-            . . f f c f f f c f f f f 
-            f f c c f f f c c f f c f 
-            f f f f f e f f f f c c f 
-            . f f f e e f f f f f f f 
-            . . f f e e f b f e e f f 
-            . . . f b b f 1 e b e f . 
-            . . . f b b b b e f f f . 
-            . . . f f e e e e e f . . 
-            . 5 c f d d d 2 2 2 e . . 
-            5 5 c c c c e e d d e . . 
-            5 5 c c c c e e d d f . . 
-            . 5 c . f f f f f f . . . 
-            . . . . . . f f f . . . . 
-            `,img`
-            . . . . . f f f f f . . . 
-            . . . f f f f f f f f f . 
-            . . f f f c f f f f f f . 
-            . . f f c f f f c f f f f 
-            f f c c f f f c c f f c f 
-            f f f f f e f f f f c c f 
-            . f f f e e f f f f f f f 
-            . . f f e e f b f e e f f 
-            . . . f b b f 1 e b e f . 
-            . . . f b b b b e f f f . 
-            . . . f f e e e e e f . . 
-            . . c f d d d 2 2 2 e . . 
-            . 5 c c c c e e d d e . . 
-            . 5 c c c c e e d d f . . 
-            . . c . f f f f f f . . . 
-            . . . . . . f f f . . . . 
-            `],
-        100,
-        characterAnimations.rule(Predicate.NotMoving, Predicate.FacingLeft)
-        )
-        multilights.flashlightSourceAttachedTo(Ghostbuster_1).direction = 180
-    } else if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingDown, Predicate.NotMoving))) {
-        multilights.flashlightSourceAttachedTo(Ghostbuster_1).direction = 90
-    } else if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingUp, Predicate.NotMoving))) {
-        multilights.flashlightSourceAttachedTo(Ghostbuster_1).direction = 90
-    }
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . e 2 2 2 d d d f c 5 . 
+        . . e d d e e c c c c 5 . 
+        . . f d d e e c c c c 5 . 
+        . . . f f f f f f . c 5 . 
+        . . . . f f f . . . . . . 
+        `,img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . e 2 2 2 d d d f c 5 . 
+        . . e d d e e c c c c 5 5 
+        . . f d d e e c c c c 5 5 
+        . . . f f f f f f . c 5 . 
+        . . . . f f f . . . . . . 
+        `,img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . e 2 2 2 d d d f c 5 . 
+        . . e d d e e c c c c 5 5 
+        . . f d d e e c c c c 5 5 
+        . . . f f f f f f . c 5 . 
+        . . . . f f f . . . . . . 
+        `,img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . e 2 2 2 d d d f c 5 . 
+        . . e d d e e c c c c 5 5 
+        . . f d d e e c c c c 5 5 
+        . . . f f f f f f . c 5 . 
+        . . . . f f f . . . . . . 
+        `,img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . e 2 2 2 d d d f c . . 
+        . . e d d e e c c c c 5 . 
+        . . f d d e e c c c c 5 . 
+        . . . f f f f f f . c . . 
+        . . . . f f f . . . . . . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.NotMoving, Predicate.FacingRight)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . . . . . . . . . . 
+        . . . f f f f f f . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f f . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f f . 
+        f f e e e 1 f e e f f . . 
+        . f f f e e e e e f . . . 
+        . 2 2 2 d d d d d f c 5 . 
+        . d d d d e e c c c c 5 . 
+        . f d d d e e c c c c 5 . 
+        . f f f f f f f f f c 5 . 
+        . . f f . . . f f f . . . 
+        `,img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . 2 2 2 2 d d d f c 5 . 
+        . . d d d e e c c c c 5 5 
+        . . f d d e e c c c c 5 5 
+        . . . f f f f f f . c 5 . 
+        . . . . f f f . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . f f f f f f . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f f . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f f . . 
+        . f f f e e e e e f . . . 
+        . d 2 2 2 d d d f f c . . 
+        . d d d d e e c c c c 5 . 
+        . f f d d e e c c c c 5 . 
+        . f f f f f f f f f c . . 
+        . . f f . . . f f f . . . 
+        `,img`
+        . . . f f f f f . . . . . 
+        . f f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f c f f f c f f . . 
+        f c f f c c f f f c c f f 
+        f c c f f f f e f f f f f 
+        f f f f f f f e e f f f . 
+        f f e e f b f e e f f . . 
+        . f e e e 1 f e e f . . . 
+        . f f f e e e e e f . . . 
+        . . f e e e e e f f . . . 
+        . . d 2 2 2 d d d f c 5 . 
+        . . d d d e e c c c c 5 5 
+        . . f d d e e c c c c 5 5 
+        . . . f f f f f f . c 5 . 
+        . . . . f f f . . . . . . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.Moving, Predicate.FacingRight)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . 5 c f d d d 2 2 2 e . . 
+        . 5 c c c c e e d d e . . 
+        . 5 c c c c e e d d f . . 
+        . 5 c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `,img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . 5 c f d d d 2 2 2 e . . 
+        5 5 c c c c e e d d e . . 
+        5 5 c c c c e e d d f . . 
+        . 5 c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `,img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . 5 c f d d d 2 2 2 e . . 
+        5 5 c c c c e e d d e . . 
+        5 5 c c c c e e d d f . . 
+        . 5 c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `,img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . 5 c f d d d 2 2 2 e . . 
+        5 5 c c c c e e d d e . . 
+        5 5 c c c c e e d d f . . 
+        . 5 c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `,img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . . c f d d d 2 2 2 e . . 
+        . 5 c c c c e e d d e . . 
+        . 5 c c c c e e d d f . . 
+        . . c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.NotMoving, Predicate.FacingLeft)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . . . . . . . . . . 
+        . . . . f f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . f f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . f f f e e f b f e e f f 
+        . . f f e e f 1 e e e f f 
+        . . . f e e e e e f f f . 
+        . 5 c f d d d d d 2 2 2 . 
+        . 5 c c c c e e d d d d . 
+        . 5 c c c c e e d d d f . 
+        . 5 c f f f f f f f f f . 
+        . . . f f f . . . f f . . 
+        `,img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . 5 c f d d d 2 2 2 2 . . 
+        5 5 c c c c e e d d d . . 
+        5 5 c c c c e e d d f . . 
+        . 5 c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . f f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . f f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . f f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . c f f d d d 2 2 2 d . 
+        . 5 c c c c e e d d d d . 
+        . 5 c c c c e e d d f f . 
+        . . c f f f f f f f f f . 
+        . . . f f f . . . f f . . 
+        `,img`
+        . . . . . f f f f f . . . 
+        . . . f f f f f f f f f . 
+        . . f f f c f f f f f f . 
+        . . f f c f f f c f f f f 
+        f f c c f f f c c f f c f 
+        f f f f f e f f f f c c f 
+        . f f f e e f f f f f f f 
+        . . f f e e f b f e e f f 
+        . . . f e e f 1 e e e f . 
+        . . . f e e e e e f f f . 
+        . . . f f e e e e e f . . 
+        . 5 c f d d d 2 2 2 d . . 
+        5 5 c c c c e e d d d . . 
+        5 5 c c c c e e d d f . . 
+        . 5 c . f f f f f f . . . 
+        . . . . . . f f f . . . . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.Moving, Predicate.FacingLeft)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . f f f f . . . . . 
+        . . f f c c c c f f . . . 
+        . f f c c c c c c f f . . 
+        f f c c c c c c c c f f . 
+        f f c c f c c c c c c f . 
+        f f f f f c c c f c c f . 
+        f f f f c c c f c c f f . 
+        f f f f f f f f f f f f . 
+        f f f f f f f f f f f f . 
+        . f f f f f f f f f f . . 
+        . f f f f f f f f f f . . 
+        2 2 2 f f f f f f 2 2 2 . 
+        d d f d d d d d d c d d . 
+        e e f d d d d d d f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.Moving, Predicate.FacingUp)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . f f f f . . . . . 
+        . . f f c c c c f f . . . 
+        . f f c c c c c c f f . . 
+        f f c c c c c c c c f f . 
+        f f c c f c c c c c c f . 
+        f f f f f c c c f c c f . 
+        f f f f c c c f c c f f . 
+        f f f f f f f f f f f f . 
+        f f f f f f f f f f f f . 
+        . f f f f f f f f f f . . 
+        . f f f f f f f f f f . . 
+        2 2 f f f f f f f f 2 2 . 
+        d d f d d d d d d c d d . 
+        e e f d d d d d d f e e . 
+        . . . f f f f f f . . . . 
+        . . . f f . . f f . . . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . . f f f f . . . . 
+        . . . f f c c c c f f . . 
+        . f f f c c c c c c f f . 
+        f f c c c c c c c c c f f 
+        f c c c c f c c c c c c f 
+        . f f f f c c c c f c c f 
+        . f f f f c c f c c c f f 
+        . f f f f f f f f f f f f 
+        . f f f f f f f f f f f f 
+        . . f f f f f f f f f f . 
+        . . 2 f f f f f f f f f . 
+        . . 2 f f f f f f f f 2 2 
+        . . d c d d d d d d d d e 
+        . . e f f f f f f f e e . 
+        . . . f f f . . . . . . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . f f f f . . . . . 
+        . . f f c c c c f f . . . 
+        . f f c c c c c c f f f . 
+        f f c c c c c c c c c f f 
+        f c c c c c c f c c c c f 
+        f c c f c c c c f f f f . 
+        f f c c c f c c f f f f . 
+        f f f f f f f f f f f f . 
+        f f f f f f f f f f f f . 
+        . f f f f f f f f f f . . 
+        . f f f f f f f f f 2 . . 
+        2 2 f f f f f f f f 2 . . 
+        e d d d d d d d d c d . . 
+        . e e f f f f f f f e . . 
+        . . . . . . . f f f . . . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.Moving, Predicate.FacingUp)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f e 1 f e e f 1 e f . . 
+        . f e e e e e e e e f . . 
+        . f f f e f f e f f f . . 
+        2 2 2 d d d d d d 2 2 2 . 
+        d d f d d d d d d c c d . 
+        e e f d d d d d d c c e . 
+        . . . f f f f f f c c . . 
+        . . . f f . . f f 5 5 . . 
+        `,img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f e 1 f e e f 1 e f . . 
+        . f e e e e e e e e f . . 
+        . f f f e f f e f f f . . 
+        2 2 2 d d d d d d 2 2 2 . 
+        d d f d d d d d d c c d . 
+        e e f d d d d d d c c e . 
+        . . . f f f f f f c c . . 
+        . . . f f . . f f 5 5 . . 
+        `],
+    5000,
+    characterAnimations.rule(Predicate.NotMoving, Predicate.FacingDown)
+    )
+    characterAnimations.loopFrames(
+    Ghostbuster_1,
+    [img`
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f f f f c f f f . . 
+        f f f f f f c c f f f c . 
+        f f f c f f f f f f f c . 
+        c c c f f f e e f f c c . 
+        f f f f f e e f f c c f . 
+        f f f b f e e f b f f f . 
+        . f e 1 f e e f 1 e f . . 
+        . f e e e e e e e e f . . 
+        . f f f e e e e f f f . . 
+        2 2 f d d d d d d c c 2 . 
+        d d f d d d d d d c c d . 
+        e e f d d d d d d c c e . 
+        . . . f f f f f f c c e . 
+        . . . f f . . f f 5 5 . . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . . f f f f . . . . 
+        . . . f f f f f f f f . . 
+        . . f f f f f f c f f f . 
+        f f f f f f f c c f f f c 
+        f f f f c f f f f f f f c 
+        . c c c f f f e e f f c c 
+        . f f f f f e e f f c c f 
+        . f f f b f e e f b f f f 
+        . f f e 1 f e e f 1 e f f 
+        . . f e e e e e e e e f e 
+        . 2 2 f d d d d d 2 c c e 
+        . e d f d d d d d d c c . 
+        . . . f d d d d d e c c . 
+        . . . f f f f f f f c c . 
+        . . . f f f . . . . 5 5 . 
+        `,img`
+        . . . . . . . . . . . . . 
+        . . . . f f f f . . . . . 
+        . . f f f f f f f f . . . 
+        . f f f c f f f f f f . . 
+        c f f f c c f f f f f f f 
+        c f f f f f f f c f f f f 
+        c c f f e e f f f c c c . 
+        f c c f f e e f f f f f . 
+        f f f b f e e f b f f f . 
+        f f e 1 f e e f 1 e f f . 
+        e f e e e e e e e e f . . 
+        e d 2 2 e d d d d c c 2 . 
+        . e d d e d d d d c c e . 
+        . . e e d d d d d c c e . 
+        . . . f f f f f f c c . . 
+        . . . . . . . f 5 5 5 5 . 
+        `],
+    100,
+    characterAnimations.rule(Predicate.Moving, Predicate.FacingDown)
+    )
+    flashlight = multilights.flashlightSourceAttachedTo(Ghostbuster_1)
 }
 function MySprite () {
+    BLOCK = 0
     Ghostbuster_1 = sprites.create(img`
         . . . f f f f f . . . . . 
         . f f f f f f f f f . . . 
@@ -304,12 +629,28 @@ function MySprite () {
         . . . f f f f f f . c . . 
         . . . . f f f . . . . . . 
         `, SpriteKind.Player)
+    controller.moveSprite(Ghostbuster_1, 50, 50)
     tiles.setCurrentTilemap(tilemap`level1`)
     scene.cameraFollowSprite(Ghostbuster_1)
     tiles.placeOnTile(Ghostbuster_1, tiles.getTileLocation(0, 2))
-    controller.moveSprite(Ghostbuster_1, 50, 50)
 }
+let BLOCK = 0
+let flashlight: lightsource.FlashlightLightSource = null
 let Ghostbuster_1: Sprite = null
 let myMenu: miniMenu.MenuSprite = null
 let textSprite: TextSprite = null
+let a = 0
 Start()
+game.onUpdate(function () {
+    if (a > 0) {
+        if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingRight))) {
+            flashlight.direction = 0
+        } else if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingLeft))) {
+            flashlight.direction = 180
+        } else if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingDown))) {
+            flashlight.direction = 90
+        } else if (characterAnimations.matchesRule(Ghostbuster_1, characterAnimations.rule(Predicate.FacingUp))) {
+            flashlight.direction = 270
+        }
+    }
+})
